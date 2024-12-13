@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build All C++ Files", // 전체 C++ 파일 컴파일
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "main.cpp",
+        "Quote.cpp",
+        "PositiveQuote.cpp",
+        "NegativeQuote.cpp",
+        "QuoteManager.cpp",
+        "-o",         // 출력 파일 지정
+        "main.exe",   // 실행 파일 이름
+        "-g",         // 디버그 정보 포함
+        "-Wall",      // 경고 메시지 활성화
+        "-Wextra"     // 추가 경고 메시지 활성화
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true // 기본 빌드 작업으로 설정
+      },
+      "problemMatcher": [
+        "$gcc" // GCC 문제 매칭
+      ],
+      "detail": "빌드 전체 프로젝트를 위한 사용자 정의 설정입니다."
+    },
+    {
+      "label": "Run Executable", // 실행 파일 실행 작업
+      "type": "shell",
+      "command": "cmd",
+      "args": [
+        "/c",
+        "main.exe" // 생성된 실행 파일 실행
+      ],
+      "group": {
+        "kind": "test",
+        "isDefault": false
+      },
+      "presentation": {
+        "reveal": "always" // 항상 결과 출력
+      },
+      "options": {
+        "cwd": "${workspaceFolder}" // 현재 작업 디렉토리 설정
+      },
+      "detail": "생성된 실행 파일 실행"
+    }
+  ]
+}
